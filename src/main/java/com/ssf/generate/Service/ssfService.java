@@ -1,7 +1,7 @@
 package com.ssf.generate.Service;
 
+import java.util.List;
 import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,6 @@ import com.ssf.generate.Model.ssfModel;
 
 @Service
 public class ssfService {
-
 
     @Autowired
     private JpaRepository<ssfModel, Long> ssfRepository;
@@ -115,6 +114,12 @@ public class ssfService {
         String cpf = gerarCpf(estado);
         ssfRepository.save(new ssfModel(cpf));
         return cpf;
+    }
+
+    //Mostrar o CPF salvo no banco de dados
+    public List<String> mostrarCpf() {
+        List<ssfModel> cpfs = ssfRepository.findAll();
+        return cpfs.stream().map(ssfModel::getCpf).toList();
     }
 
 }
