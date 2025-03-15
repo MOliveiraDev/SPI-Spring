@@ -1,21 +1,19 @@
 package com.ssf.generate.Controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import com.ssf.generate.Model.ssfModel;
+import com.ssf.generate.Service.ssfService;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.ssf.generate.Repository.ssfRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Controller
 @RequestMapping("/usuario")
 public class ssfController {
 
     @Autowired
-    private ssfRepository ssfRepository;
+    private ssfService ssfService;
 
-    public ssfModel gerarUsuários(ssfModel ssfModel) {
-        return ssfRepository.save(ssfModel);
+    // Endpoint para gerar e salvar um CPF
+    @PostMapping("/gerar-cpf")
+    public String gerarCpf(@RequestParam String estado) {
+        return ssfService.salvarCpf(estado);
     }
 }
