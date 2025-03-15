@@ -112,14 +112,22 @@ public class ssfService {
     //Salvar o CPF gerado no banco de dados
     public String salvarCpf(String estado) {
         String cpf = gerarCpf(estado);
-        ssfRepository.save(new ssfModel(cpf));
-        return cpf;
+        ssfModel savedModel = ssfRepository.save(new ssfModel(cpf));
+        return savedModel.getCpf();
     }
 
-    //Mostrar o CPF salvo no banco de dados
-    public List<String> mostrarCpf() {
-        List<ssfModel> cpfs = ssfRepository.findAll();
-        return cpfs.stream().map(ssfModel::getCpf).toList();
+    //Buscar todos os CPFs
+    public List<ssfModel> buscarCpfs() {
+        return ssfRepository.findAll();
     }
 
+    //Buscar um CPF por ID
+    public ssfModel buscarCpfPorId(Long id) {
+        return ssfRepository.findById(id).orElseThrow();
+    }
+
+    //Deletar um CPF por ID
+    public void deletarCpfPorId(Long id) {
+        ssfRepository.deleteById(id);
+    }
 }
