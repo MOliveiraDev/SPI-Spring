@@ -69,19 +69,23 @@ public class ssfService {
         }
     }
 
-        //Método para calcular os digitos verificadores
+    //Método para calcular os digitos verificadores
     private String calcularDigitosVeirifcadores(String cpfParcial) {
+        if (cpfParcial.length() < 9) {
+            throw new IllegalArgumentException("CPF parcial deve ter pelo menos 9 caracteres.");
+        }
+
         int[] pesosprimeiroDigito = {10, 9, 8, 7, 6, 5, 4, 3, 2};
         int[] pesosSegundoDigito = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
-        //Calculando o primeiro dígito verificador
+        // Calculando o primeiro dígito verificador
         int soma = 0;
         for (int i = 0; i < 9; i++) {
             soma += Integer.parseInt(String.valueOf(cpfParcial.charAt(i))) * pesosprimeiroDigito[i];
         }
         int primeiroDigito = (soma % 11) < 2 ? 0 : 11 - (soma % 11);
 
-        //Calculando o segundo dígito verificador
+        // Calculando o segundo dígito verificador
         soma = 0;
         for (int i = 0; i < 10; i++) {
             soma += Integer.parseInt(String.valueOf(cpfParcial.charAt(i))) * pesosSegundoDigito[i];
@@ -90,7 +94,6 @@ public class ssfService {
         int segundoDigito = (soma % 11) < 2 ? 0 : 11 - (soma % 11);
 
         return String.valueOf(primeiroDigito) + String.valueOf(segundoDigito);
-
     }
 
     //gerar o CPF
@@ -98,6 +101,9 @@ public class ssfService {
         String primeiroDigitos = gerarPrimeirosDigitosCpf();
         String nondoDigito = DefinirONonoDigito(estado);
         String cpfParcial = primeiroDigitos + nondoDigito;
+        if (cpfParcial.length() != 9) {
+            throw new IllegalArgumentException("CPF parcial deve ter exatamente 9 caracteres.");
+        }
         String digitosVerificadores = calcularDigitosVeirifcadores(cpfParcial);
         String cpfcompleto = cpfParcial + digitosVerificadores;
 
