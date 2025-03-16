@@ -70,7 +70,7 @@ public class ssfService {
     }
 
     //Método para calcular os digitos verificadores
-    private String calcularDigitosVeirifcadores(String cpfParcial) {
+    String calcularDigitosVeirifcadores(String cpfParcial) {
         if (cpfParcial.length() < 9) {
             throw new IllegalArgumentException("CPF parcial deve ter pelo menos 9 caracteres.");
         }
