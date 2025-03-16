@@ -27,45 +27,37 @@ public class ssfService {
     private String DefinirONonoDigito(String estado) {
 
         switch (estado.toUpperCase()) {
-            case "DF":
-            case "GO":
-            case "MS":
-            case "MT":
-            case "TO":
+            case "DF", "GO", "MS", "MT", "TO" -> {
                 return "1";
-            case "AC":
-            case "AM":
-            case "AP":
-            case "PA":
-            case "RO":
-            case "RR":
+            }
+            case "AC", "AM", "AP", "PA", "RO", "RR" -> {
                 return "2";
-            case "CE":
-            case "MA":
-            case "PI":
+            }
+            case "CE", "MA", "PI" -> {
                 return "3";
-            case "AL":
-            case "PB":
-            case "PE":
-            case "RN":
+            }
+            case "AL", "PB", "PE", "RN" -> {
                 return "4";
-            case "BA":
-            case "SE":
+            }
+            case "BA", "SE" -> {
                 return "5";
-            case "MG":
+            }
+            case "MG" -> {
                 return "6";
-            case "ES":
-            case "RJ":
+            }
+            case "ES", "RJ" -> {
                 return "7";
-            case "SP":
+            }
+            case "SP" -> {
                 return "8";
-            case "PR":
-            case "SC":
+            }
+            case "PR", "SC" -> {
                 return "9";
-            case "RS":
+            }
+            case "RS" -> {
                 return "0";
-            default:
-                throw new IllegalArgumentException("Estado inválido!");
+            }
+            default -> throw new IllegalArgumentException("Estado inválido!");
         }
     }
 
