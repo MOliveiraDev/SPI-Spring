@@ -74,7 +74,7 @@ public class ssfService {
         String digitosVerificadores = calcularDigitosVerificadores(cpfParcial);
         String cpfCompleto = cpfParcial + digitosVerificadores;
 
-        // Formatação do CPF (XXX.XXX.XXX-XX)
+       
         return cpfCompleto.substring(0, 3) + "." +
                 cpfCompleto.substring(3, 6) + "." +
                 cpfCompleto.substring(6, 9) + "-" +
