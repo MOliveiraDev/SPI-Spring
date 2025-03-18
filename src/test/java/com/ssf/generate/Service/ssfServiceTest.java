@@ -41,7 +41,7 @@ public class ssfServiceTest {
 
         
         char nonoDigito = cpf.charAt(8);
-        assertEquals('9', nonoDigito); // O nono dígito para o estado "SP" deve ser "9"
+        assertEquals('8', nonoDigito); // O nono dígito para o estado "SP" deve ser "8"
     }
 
     @Test
