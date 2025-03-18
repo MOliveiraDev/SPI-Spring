@@ -34,14 +34,14 @@ public class ssfServiceTest {
         // Verifica se o CPF gerado tem o comprimento correto (XXX.XXX.XXX-XX)
         assertEquals(14, cpf.length());
 
-        // Verifica se o CPF gerado tem a formatação correta
-        assertEquals('.', cpf.charAt(3)); // Verifica o primeiro ponto
-        assertEquals('.', cpf.charAt(7)); // Verifica o segundo ponto
-        assertEquals('-', cpf.charAt(11)); // Verifica o traço
+       
+        assertEquals('.', cpf.charAt(3)); 
+        assertEquals('.', cpf.charAt(7)); 
+        assertEquals('-', cpf.charAt(11)); 
 
-        // Verifica se o nono dígito corresponde ao estado "SP" (deve ser "8")
+        
         char nonoDigito = cpf.charAt(8);
-        assertEquals('9', nonoDigito); // O nono dígito para o estado "SP" deve ser "8"
+        assertEquals('9', nonoDigito); // O nono dígito para o estado "SP" deve ser "9"
     }
 
     @Test
