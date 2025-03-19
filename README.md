@@ -11,7 +11,7 @@ Este projeto é um exemplo de uma aplicação Spring Boot que gera CPFs válidos
 - **Buscar CPF por ID**: Busca um CPF específico pelo ID.
 - **Deletar CPF por ID**: Remove um CPF do banco de dados pelo ID.
 
-### Back-End
+## Tecnologias usadas:
 
 - **Java**
 - **Spring Boot**
@@ -21,7 +21,4 @@ Este projeto é um exemplo de uma aplicação Spring Boot que gera CPFs válidos
 - **Maven**
 - **Lombok**
 - **Flyway-core**
-
-### Banco de Dados
-
 - **PostgreSQL**
