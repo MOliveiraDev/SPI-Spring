@@ -14,11 +14,11 @@ public class ssfService {
     @Autowired
     private ssfRepository ssfRepository;
 
-    // Gera os primeiros 8 dígitos do CPF
+    // Gera os primeiros 8 dígitos do CPF dde forma aleatória
     private String gerarPrimeirosDigitosCpf() {
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 8; i++) { // Gera 8 dígitos aleatórios
+        for (int i = 0; i < 8; i++) { 
             sb.append(random.nextInt(10));
         }
         return sb.toString();
@@ -70,6 +70,8 @@ public class ssfService {
     }
 
     // Calcula os dígitos verificadores do CPF
+    // Resposável por calcular ois dois dígitos verificadores do CPF
+    // O cálculo é feito com base nos pesos 2 a 11, que são multiplicados pelos 9 primeiros dígitos do CPF 
     public String calcularDigitosVeirifcadores(String cpfParcial) {
         if (cpfParcial.length() != 9) {
             throw new IllegalArgumentException("CPF parcial deve ter exatamente 9 caracteres.");
