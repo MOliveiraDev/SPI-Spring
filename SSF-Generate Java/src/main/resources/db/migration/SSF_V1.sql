@@ -6,3 +6,6 @@ CREATE TABLE CPF_dos_Usuarios (
     estado VARCHAR(255),
     cpf VARCHAR(255)
 );
+**resetar o numero do id**
+
+RESET SEQUENCE CPF_dos_Usuarios_id_seq RESTART WITH 1;
