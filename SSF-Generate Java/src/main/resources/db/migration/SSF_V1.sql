@@ -1,4 +1,4 @@
-CREATE TABLE CPF_dos_Usuarios (
+CREATE TABLE cpf_dos_usuarios (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255),
     email VARCHAR(255),
@@ -6,6 +6,5 @@ CREATE TABLE CPF_dos_Usuarios (
     estado VARCHAR(255),
     cpf VARCHAR(255)
 );
-**resetar o numero do id**
-
-RESET SEQUENCE CPF_dos_Usuarios_id_seq RESTART WITH 1;
+-- Resetar o número do id
+ALTER SEQUENCE cpf_dos_usuarios_id_seq RESTART WITH 1;
