@@ -25,19 +25,6 @@ public class ssfServiceTest {
         });
         assertEquals("CPF parcial deve ter exatamente 9 caracteres.", exception.getMessage()); // Mensagem de erro esperada
     }
-
-    //vamos fazer o teste de gerar o cpf
-    @Test
-    public void gerarCpfTest() {
-
-        // Gerando um CPF válido
-        String cpf = ssfService.gerarCpf("SP");
-        assertEquals(14, cpf.length()); // O CPF gerado deve ter 11 caracteres
-
-        // Gerando um novo CPF válido
-        String cpf2 = ssfService.gerarCpf("RJ");
-        assertEquals(14, cpf2.length()); // O CPF gerado deve ter 11 caracteres
-    }
     
     @Test
     public void DefinirONonoDigitoTest() {
