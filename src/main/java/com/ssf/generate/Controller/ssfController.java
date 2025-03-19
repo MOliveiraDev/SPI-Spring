@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+
+import com.ssf.generate.Controller.dto.CpfDTO;
 import com.ssf.generate.Controller.dto.ssfDto;
 import com.ssf.generate.Model.ssfModel;
 import java.util.stream.Collectors;
@@ -20,12 +22,9 @@ public class ssfController {
 
     // Endpoint para gerar e salvar um CPF
     @PostMapping("/gerar-cpf")
-    public ResponseEntity<String> gerarCpf(@RequestParam String estado) {
-        if (estado == null || estado.isEmpty()) {
-            return ResponseEntity.badRequest().body("O parâmetro 'estado' é obrigatório.");
-        }
-        String cpf = ssfService.salvarCpf(estado);
-        return ResponseEntity.ok(cpf);
+    public ResponseEntity<ssfModel> gerarCpf(@RequestBody CpfDTO cpfDTO) {
+        ssfModel usuarioSalvo = ssfService.salvarUsuarioComCpf(cpfDTO);
+        return ResponseEntity.ok(usuarioSalvo);
     }
 
     // Endpoint para buscar todos os CPFs
