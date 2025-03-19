@@ -1,11 +1,13 @@
 package com.ssf.generate.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@Table(name = "cpf_dos_usuarios")
 public class ssfModel {
 
     @Id
