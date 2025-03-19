@@ -20,8 +20,12 @@ public class ssfController {
 
     // Endpoint para gerar e salvar um CPF
     @PostMapping("/gerar-cpf")
-    public String gerarCpf(@RequestParam String estado) {
-        return ssfService.salvarCpf(estado);
+    public ResponseEntity<String> gerarCpf(@RequestParam String estado) {
+        if (estado == null || estado.isEmpty()) {
+            return ResponseEntity.badRequest().body("O parâmetro 'estado' é obrigatório.");
+        }
+        String cpf = ssfService.salvarCpf(estado);
+        return ResponseEntity.ok(cpf);
     }
 
     // Endpoint para buscar todos os CPFs

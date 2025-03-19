@@ -23,33 +23,61 @@ public class ssfService {
     }
 
     public String DefinirONonoDigito(String estado) {
-        return switch (estado.toUpperCase()) {
-            case "DF", "GO", "MS", "MT", "TO" -> "1";
-            case "AC", "AM", "AP", "PA", "RO", "RR" -> "2";
-            case "CE", "MA", "PI" -> "3";
-            case "AL", "PB", "PE", "RN" -> "4";
-            case "BA", "SE" -> "5";
-            case "MG" -> "6";
-            case "ES", "RJ" -> "7";
-            case "SP" -> "8";
-            case "PR", "SC" -> "9";
-            case "RS" -> "0";
-            default -> throw new IllegalArgumentException("Estado inválido!");
-        };
+        switch (estado.toUpperCase()) {
+            case "DF":
+            case "GO":
+            case "MS":
+            case "MT":
+            case "TO":
+                return "1";
+            case "AC":
+            case "AM":
+            case "AP":
+            case "PA":
+            case "RO":
+            case "RR":
+                return "2";
+            case "CE":
+            case "MA":
+            case "PI":
+                return "3";
+            case "AL":
+            case "PB":
+            case "PE":
+            case "RN":
+                return "4";
+            case "BA":
+            case "SE":
+                return "5";
+            case "MG":
+                return "6";
+            case "ES":
+            case "RJ":
+                return "7";
+            case "SP":
+                return "8";
+            case "PR":
+            case "SC":
+                return "9";
+            case "RS":
+                return "0";
+            default:
+                throw new IllegalArgumentException("Estado inválido!");
+        }
     }
 
-    public String calcularDigitosVerificadores(String cpfParcial) {
-        if (cpfParcial.length() != 9) {
-            throw new IllegalArgumentException("CPF parcial deve ter exatamente 9 caracteres.");
+    public String calcularDigitosVeirifcadores(String cpfParcial) {
+        if (cpfParcial.length() < 9) {
+            throw new IllegalArgumentException("CPF parcial deve ter pelo menos 9 caracteres.");
         }
 
-        int[] pesosPrimeiroDigito = {10, 9, 8, 7, 6, 5, 4, 3, 2};
+        int[] pesosprimeiroDigito = {10, 9, 8, 7, 6, 5, 4, 3, 2};
         int[] pesosSegundoDigito = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
         // Calculando o primeiro dígito verificador
         int soma = 0;
         for (int i = 0; i < 9; i++) {
-            soma += Integer.parseInt(String.valueOf(cpfParcial.charAt(i))) * pesosPrimeiroDigito[i];
+            soma += Integer.parseInt(String.valueOf(cpfParcial.charAt(i))) * pesosprimeiroDigito[i];
         }
         int primeiroDigito = (soma % 11) < 2 ? 0 : 11 - (soma % 11);
 
@@ -58,7 +86,7 @@ public class ssfService {
         for (int i = 0; i < 9; i++) {
             soma += Integer.parseInt(String.valueOf(cpfParcial.charAt(i))) * pesosSegundoDigito[i];
         }
-        soma += primeiroDigito * pesosSegundoDigito[9]; // Adiciona o primeiro dígito verificador
+        soma += primeiroDigito * pesosSegundoDigito[9];
         int segundoDigito = (soma % 11) < 2 ? 0 : 11 - (soma % 11);
 
         return String.valueOf(primeiroDigito) + String.valueOf(segundoDigito);
@@ -71,10 +99,10 @@ public class ssfService {
         if (cpfParcial.length() != 9) {
             throw new IllegalArgumentException("CPF parcial deve ter exatamente 9 caracteres.");
         }
-        String digitosVerificadores = calcularDigitosVerificadores(cpfParcial);
+        String digitosVerificadores = calcularDigitosVeirifcadores(cpfParcial);
         String cpfCompleto = cpfParcial + digitosVerificadores;
 
-       
+        // Formatação do CPF (XXX.XXX.XXX-XX)
         return cpfCompleto.substring(0, 3) + "." +
                 cpfCompleto.substring(3, 6) + "." +
                 cpfCompleto.substring(6, 9) + "-" +

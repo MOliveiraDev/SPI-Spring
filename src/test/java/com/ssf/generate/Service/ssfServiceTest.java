@@ -15,17 +15,17 @@ public class ssfServiceTest {
     public void calcularDigitosVeirifcadoresTest() {
         // CPF parcial válido
         String cpfParcial = "123456789";
-        String digitosVerificadores = ssfService.calcularDigitosVerificadores(cpfParcial);
+        String digitosVerificadores = ssfService.calcularDigitosVeirifcadores(cpfParcial);
         assertEquals("09", digitosVerificadores); // O valor esperado deve ser "09" para o CPF parcial "123456789"
 
         // CPF parcial inválido (menos de 9 caracteres)
         String cpfParcialInvalido = "12345";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            ssfService.calcularDigitosVerificadores(cpfParcialInvalido);
+            ssfService.calcularDigitosVeirifcadores(cpfParcialInvalido);
         });
-        assertEquals("CPF parcial deve ter exatamente 9 caracteres.", exception.getMessage()); // Mensagem de erro esperada
+        assertEquals("CPF parcial deve ter pelo menos 9 caracteres.", exception.getMessage()); // Mensagem de erro esperada
     }
-    
+
     @Test
     public void DefinirONonoDigitoTest() {
         // Teste para o estado "SP" (deve retornar "8")
