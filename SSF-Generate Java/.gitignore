@@ -34,5 +34,7 @@ build/
 
 ### Dotenv ###
 .env
-.env.test
+.env
+.env.development.local
+.env.test.local
 .env.local
