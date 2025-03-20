@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Dotenv ###
+.env
+.env.test
+.env.local
