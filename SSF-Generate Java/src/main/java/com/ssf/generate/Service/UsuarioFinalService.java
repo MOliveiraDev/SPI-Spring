@@ -43,4 +43,14 @@ public class UsuarioFinalService {
             usuarioFinalRepository.save(usuario);
         }
     }
+
+    public boolean autenticarUsuario(String email, String senha) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'autenticarUsuario'");
+    }
+
+    public void deletarUsuarioPorId(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deletarUsuarioPorId'");
+    }
 }
