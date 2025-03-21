@@ -5,7 +5,13 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
 @Entity
 @Table(name = "cpf_dos_usuarios")
 public class ssfModel {
@@ -37,7 +43,6 @@ public class ssfModel {
         this.cpf = cpf;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
