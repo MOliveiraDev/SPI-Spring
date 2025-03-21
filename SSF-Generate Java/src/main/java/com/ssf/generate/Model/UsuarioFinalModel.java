@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity (name = "usuario_final")
-@Table
+@Table (name = "usuariosfinais")
 public class UsuarioFinalModel {
 
         @Id
@@ -22,7 +22,7 @@ public class UsuarioFinalModel {
         private String email;
         private String senha;
         private String repetirSenha;
-
+        private String tokenRecuperacao;
 
 
 }

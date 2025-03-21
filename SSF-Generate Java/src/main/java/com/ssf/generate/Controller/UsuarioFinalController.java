@@ -24,9 +24,23 @@ public class UsuarioFinalController {
         return ResponseEntity.ok(usuarioFinalService.cadastrarUsuarioFinal(usuarioFinalModel));
     }
 
+    //Página de Login
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(@RequestParam String email, @RequestParam String senha) {
+        // Verificar se o usuário existe e a senha está correta
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/gerar-cpf")
     public ResponseEntity<ssfModel> gerarCpf(@RequestBody CpfDTO cpfDTO) {
         ssfModel usuarioSalvo = ssfService.salvarUsuarioComCpf(cpfDTO);
         return ResponseEntity.ok(usuarioSalvo);
+    }
+
+    //quando o usuario esquecer a senha
+    @PostMapping("/esqueceu-senha")
+    public ResponseEntity<Void> esqueceuSenha(@RequestParam String email) {
+        usuarioFinalService.iniciarRecuperacaoSenha(email);
+        return ResponseEntity.noContent().build();
     }
 }
