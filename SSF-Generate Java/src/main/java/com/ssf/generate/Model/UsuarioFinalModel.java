@@ -18,59 +18,24 @@ public class UsuarioFinalModel {
         @GeneratedValue (strategy = GenerationType.IDENTITY)
         private Long id;
 
+        @Getter
+        @Setter
         private String nomeCompleto;
+        @Setter
+        @Getter
         private String email;
+        @Setter
+        @Getter
         private String senha;
+        @Setter
+        @Getter
         private String repetirSenha;
+        @Setter
+        @Getter
         private String tokenRecuperacao;
 
+        @Setter
+        @Getter
         private String nome;
 
-        public String getNome() {
-            return nome;
-        }
-
-        public void setNome(String nome) {
-            this.nome = nome;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public String getSenha() {
-            return senha;
-        }
-
-        public void setSenha(String senha) {
-            this.senha = senha;
-        }
-
-        public String getNomeCompleto() {
-            return nomeCompleto;
-        }
-
-        public void setNomeCompleto(String nomeCompleto) {
-            this.nomeCompleto = nomeCompleto;
-        }
-
-        public String getRepetirSenha() {
-            return repetirSenha;
-        }
-
-        public void setRepetirSenha(String repetirSenha) {
-            this.repetirSenha = repetirSenha;
-        }
-
-        public String getTokenRecuperacao() {
-            return tokenRecuperacao;
-        }
-
-        public void setTokenRecuperacao(String tokenRecuperacao) {
-            this.tokenRecuperacao = tokenRecuperacao;
-        }
 }
